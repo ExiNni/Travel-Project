@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>로그인</title>
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+<form action = "LoginServlet" method="post">
+	
+	<header>
+        <h1>Main Page</h1>
+        <div class="navbar">
+            <ul>
+                <li class="active"><a href="../project_main.html">TOP 여행지</a></li>
+                <li><a href="../로그인/login.html">로그인</a></li>
+            </ul>
+        </div>
+        <div class="title">
+            <h1>Main Page</h1>
+        </div>
+        <div class="button">
+            <a href="#" class="btn">LEARN MORE</a>
+        </div>
+    </header>
+</form>
+</body>
+</html>

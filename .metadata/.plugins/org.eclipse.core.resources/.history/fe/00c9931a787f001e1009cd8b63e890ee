@@ -1,0 +1,52 @@
+package project_login;
+
+//UserDAO.java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class UserDAO {
+ private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+ private static final String jdbcUsername = "project1";
+ private static final String jdbcPassword = "123456";
+
+ public boolean validateUser(String userId, String userPw) {
+     String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ? AND USER_PW = ?";
+     try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+          PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+         preparedStatement.setString(1, userId);
+         preparedStatement.setString(2, userPw);
+         ResultSet resultSet = preparedStatement.executeQuery();
+         return resultSet.next();
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
+     return false;
+ }
+
+ public User getUserDetails(String userId) {
+     User user = null;
+     String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ?";
+     try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+          PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+         preparedStatement.setString(1, userId);
+         ResultSet resultSet = preparedStatement.executeQuery();
+         if (resultSet.next()) {
+             user = new User();
+             user.setUserId(resultSet.getString("USER_ID"));
+             user.setUserPw(resultSet.getString("USER_PW"));
+             user.setUserEmail(resultSet.getString("USER_EMAIL"));
+             user.setUserPhone(resultSet.getString("USER_PHONE"));
+             user.setUserName(resultSet.getString("USER_NAME"));
+             user.setUserSex(resultSet.getString("USER_SEX"));
+             user.setUserAge(resultSet.getString("USER_AGE"));
+             user.setUserDate(resultSet.getString("USER_DATE"));
+         }
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
+     return user;
+ }
+}

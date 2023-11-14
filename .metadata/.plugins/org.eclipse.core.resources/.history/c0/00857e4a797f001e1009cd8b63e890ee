@@ -1,0 +1,22 @@
+package com.kr.user_info;
+
+public class user_info {
+	
+	/*
+	 * USER_ID
+USER_PW
+USER_EMAIL
+USER_PHONE
+USER_NAME
+USER_SEX
+USER_AGE
+USER_DATE
+	 */
+
+	private String user_id;
+	private String user_pw;
+	private String user_phone;
+	private String user_name;
+	private String user_sex;
+	
+}

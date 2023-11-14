@@ -1,0 +1,71 @@
+package com.kr.user_info;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/UserUpdateServlet")
+public class UserUpdateServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+        String jdbcUsername = "project1";
+        String jdbcPassword = "123456";
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String userId = request.getParameter("user_id");
+        String newName = request.getParameter("newName");
+        String newEmail = request.getParameter("newEmail");
+        String newPhone = request.getParameter("newPhone");
+        String newAgeStr = request.getParameter("newAge");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date newAge = null;
+        try {
+            newAge = dateFormat.parse(newAgeStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
+            String sqlUpdateUser = "UPDATE USER_INFO SET USER_NAME=?, USER_AGE=?, USER_EMAIL=?, USER_PHONE=? WHERE USER_ID=?";
+            try (PreparedStatement updateUserStatement = connection.prepareStatement(sqlUpdateUser)) {
+                updateUserStatement.setString(1, newName);
+                updateUserStatement.setDate(2, new java.sql.Date(newAge.getTime()));
+                updateUserStatement.setString(3, newEmail);
+                updateUserStatement.setString(4, newPhone);
+                updateUserStatement.setString(5, userId);
+
+                int rowsUpdated = updateUserStatement.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    // Update successful, you might want to set some success message and redirect
+                    response.sendRedirect("user-info.jsp");
+                } else {
+                    // Update failed, handle accordingly (show error message, redirect, etc.)
+                    response.sendRedirect("error.jsp");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately (show error message, log, etc.)
+            response.sendRedirect("error.jsp");
+        }
+    }
+}

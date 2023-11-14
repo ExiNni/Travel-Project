@@ -1,0 +1,43 @@
+// UserInfoUpdateDAO.java
+package com.kr.user_info;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class userDAO {
+    private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+    private static final String jdbcUsername = "project1";
+    private static final String jdbcPassword = "123456";
+
+    public boolean updateUserPassword(String user_id, String currentPassword, String newPassword) {
+        String sqlCheckPassword = "SELECT USER_PW FROM USER_INFO WHERE USER_ID = ?";
+        String sqlUpdatePassword = "UPDATE USER_INFO SET USER_PW = ? WHERE USER_ID = ?";
+
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+             PreparedStatement checkPasswordStatement = connection.prepareStatement(sqlCheckPassword);
+             PreparedStatement updatePasswordStatement = connection.prepareStatement(sqlUpdatePassword)) {
+
+            // Check if the entered current password matches the stored password
+            checkPasswordStatement.setString(1, user_id);
+            var resultSet = checkPasswordStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String storedPassword = resultSet.getString("USER_PW");
+                if (storedPassword.equals(currentPassword)) {
+                    // Update the password
+                    updatePasswordStatement.setString(1, newPassword);
+                    updatePasswordStatement.setString(2, user_id);
+                    int rowsUpdated = updatePasswordStatement.executeUpdate();
+
+                    return rowsUpdated > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+}

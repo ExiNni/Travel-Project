@@ -1,0 +1,82 @@
+package spot;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+@WebServlet("/spotServlet")
+public class TourServlet extends HttpServlet {
+    private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+    private static final String jdbcUsername = "project1";
+    private static final String jdbcPassword = "123456";
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        TourDAO tourDAO = new TourDAO();
+
+        try {
+            List<Tour> tourList = tourDAO.getAllTours();
+            request.setAttribute("tourList", tourList);
+            // Forward to your JSP or another view
+            request.getRequestDispatcher("yourJSPPage.jsp").forward(request, response);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        TourDAO tourDAO = new TourDAO();
+
+        try {
+            int tour_id = Integer.parseInt(request.getParameter("TOUR_ID"));
+            String user_id = request.getParameter("USER_ID");
+            int CITY_ID = Integer.parseInt(request.getParameter("CITY_ID"));
+            String tour_name = request.getParameter("TOUR_NAME");
+            String tour_location = request.getParameter("TOUR_LOCATION");
+            String tour_phone = request.getParameter("TOUR_PHONE");
+            String tour_time = request.getParameter("TOUR_TIME");
+            String tour_date = request.getParameter("TOUR_DATE");
+            String tour_comment = request.getParameter("TOUR_COMMENT");
+            Part tour_img = request.getPart("TOUR_IMG");
+
+            byte[] imageData = null;
+            if (tour_img != null) {
+                InputStream inputStream = tour_img.getInputStream();
+                imageData = new byte[inputStream.available()];
+                inputStream.read(imageData);
+            }
+
+            Tour tour = new Tour(tour_id, user_id, CITY_ID, tour_name, tour_location, tour_phone, tour_time,
+                    tour_date, 0, tour_comment, null);
+
+            tourDAO.insertTour(tour, imageData);
+
+            // Redirect or forward to a success page
+            response.sendRedirect("success.jsp");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle error and redirect or forward to an error page
+            response.sendRedirect("error.jsp");
+        }
+    }
+}
+
+

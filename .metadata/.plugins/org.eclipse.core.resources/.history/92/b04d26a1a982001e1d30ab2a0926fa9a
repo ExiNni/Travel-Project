@@ -1,0 +1,115 @@
+package spot;
+
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+@WebServlet("/spotServlet")
+public class TourServlet extends HttpServlet {
+	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static final String jdbcUsername = "project1";
+	private static final String jdbcPassword = "123456";
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Connection connection = null;
+		
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+		
+			String sql = "SELECT * FROM tour";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet resultSet = ps.executeQuery();
+			
+			ArrayList<Tour> tourList = new ArrayList<>();
+			
+			while(resultSet.next()) {
+				int tour_id = resultSet.getInt("tour_id");
+				String user_id = resultSet.getString("user_id");
+				int city_id = resultSet.getInt("city_id");
+				String tour_name = resultSet.getString("tour_name");
+				String tour_location = resultSet.getString("tour_location");
+				String tour_phone = resultSet.getString("tour_phone");
+				String tour_time = resultSet.getString("tour_time");
+				String tour_date = resultSet.getString("tour_date");
+				int tour_like = resultSet.getInt("tour_like");
+				String tour_comment = resultSet.getString("tour_comment");
+				Blob blob = resultSet.getBlob("tour_img");
+				byte[] imageData = blob.getBytes(1, (int)blob.length());
+				Tour tour = new Tour(tour_id, user_id, city_id, tour_name,tour_location,tour_phone,tour_time,tour_date,tour_like,tour_comment, blob);
+				response.setContentType("image/jpeg");
+				response.getOutputStream().write(imageData);
+				
+				tourList.add(tour);
+			}
+			request.setAttribute("tourList", tourList);
+			
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	
+		try {
+			Connection conn = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+			String sql = "INSERT INTO TOUR(TOUR_ID, USER_ID, CITY_ID, TOUR_NAME, TOUR_LOCATION, TOUR_PHONE, TOUR_TIME, TOUR_DATE, TOUR_COMMENT, TOUR_IMG)"
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			int tour_id = Integer.parseInt(request.getParameter("tour_id"));
+			String user_id = request.getParameter("user_id");
+			int CITY_ID = Integer.parseInt(request.getParameter("CITY_ID"));
+			String tour_name = request.getParameter("tour_name");
+			String tour_location = request.getParameter("tour_location");
+			String tour_phone = request.getParameter("tour_phone");
+			String tour_time = request.getParameter("tour_time");
+			String tour_date = request.getParameter("tour_date");
+			String tour_comment = request.getParameter("tour_comment");
+			Part tour_img = request.getPart("tour_img");
+			
+			ps.setInt(1, tour_id);
+			ps.setString(2, user_id);
+			ps.setInt(3, CITY_ID);
+			ps.setString(4, tour_name);
+			ps.setString(5, tour_location);
+			ps.setString(6, tour_phone);
+			ps.setString(7, tour_time);
+			ps.setTimestamp(8, new Timestamp(new Date().getTime()));
+			ps.setString(9,tour_comment);
+			ps.setBinaryStream(10, tour_img.getInputStream(),(int) tour_img.getSize());
+			
+			ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

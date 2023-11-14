@@ -1,0 +1,61 @@
+package spot;
+
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.Part;
+
+public class TourDAO {
+	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static final String jdbcUsername = "project1";
+	private static final String jdbcPassword = "123456";
+	
+	public TourDAO() {
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		
+		
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public List<Tour> getAllTours() {
+		List<Tour> tours = new ArrayList<>();	
+		try {
+			Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+			String sql = "SELECT * FROM tour";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next()) {
+				int tour_id = resultSet.getInt("tour_id");
+				String user_id = resultSet.getString("user_id");
+				int city_id = resultSet.getInt("city_id");
+				String tour_name = resultSet.getString("tour_name");
+				String tour_location = resultSet.getString("tour_location");
+				String tour_phone = resultSet.getString("tour_phone");
+				String tour_time = resultSet.getString("tour_time");
+				String tour_date = resultSet.getString("tour_date");
+				int tour_like = resultSet.getInt("tour_like");
+				String tour_comment = resultSet.getString("tour_comment");
+				Blob blob = resultSet.getBlob("tour_img");
+				byte[] imageData = blob.getBytes(1, (int)blob.length());
+				Tour tour = new Tour(tour_id, user_id, city_id, tour_name,tour_location,tour_phone,tour_time,tour_date,tour_like,tour_comment, blob);
+
+				tours.add(tour);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tours;
+	}
+
+	
+}

@@ -1,0 +1,30 @@
+package com.kr.user_info;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/LoginCheckServlet")
+public class LoginCheckServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Assuming you have a session attribute named "user_pw" storing the logged-in user's password
+        HttpSession session = request.getSession();
+        String storedPassword = (String) session.getAttribute("user_pw");
+
+        // Retrieve the entered password from the form
+        String enteredPassword = request.getParameter("input_password");
+
+        // Perform password check
+        if (storedPassword != null && storedPassword.equals(enteredPassword)) {
+            response.sendRedirect("user_password.jsp");
+        } else {
+            response.sendRedirect("user_password-edit.jsp");
+        }
+    }
+}

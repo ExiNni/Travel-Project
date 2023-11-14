@@ -1,0 +1,36 @@
+package com.kh.product;
+
+import java.io.IOException;
+import java.sql.DriverManager;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ProductServlet
+ */
+@WebServlet("/ProductServlet")
+public class ProductServlet extends HttpServlet {
+	
+	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static final String jdbcUsername = "khbank";
+	private static final String jdbcUserpw = "1234";
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		// 데이터베이스 연결
+		try {
+			Class.forName("oracle.jdbc.OracleDriver"); // Class.forName("oracle.jdbc.driver.OracleDriver") 이전 버전
+			
+			Connection connect = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcURL);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} 
+		
+		
+	}
+}

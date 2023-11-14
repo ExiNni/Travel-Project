@@ -1,0 +1,75 @@
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/PasswordChangeServlet")
+public class PasswordChangeServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        handlePasswordChange(request, response);
+    }
+
+    private void handlePasswordChange(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+        String jdbcUsername = "project1";
+        String jdbcPassword = "123456";
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
+            String user_id = request.getParameter("USER_ID");
+            String input_password = request.getParameter("input_password");
+
+            String sql = "SELECT USER_PW FROM USER_INFO WHERE USER_ID = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, user_id);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        String stored_password = resultSet.getString("USER_PW");
+                        if (stored_password.equals(input_password)) {
+                            response.sendRedirect("user_password.jsp"); 
+                        } else {
+                            response.sendRedirect("user_password-edit.jsp");
+                        }
+                    } else {
+                        response.sendRedirect("user_password-edit.jsp"); 
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 간단하게 회원 로그인 한 사용자인지 검증하고, 문제 없으면 비밀번호를 입력하는 페이지로 이동
+		HttpSession session= request.getSession();
+
+		RequestDispatcher view;
+		
+		if(session.getAttribute("member")!=null) {	// 회원 정보를 꺼냈을때 있다면 -> 로그인한 사용자라면
+			view = request.getRequestDispatcher("/views/member/myPagePasswordCheck.jsp");
+		}else {	// 회원 정보를 꺼냈을때 없다면-> 비로그인한 사용자라면
+			view = request.getRequestDispatcher("/views/commons/error.jsp");
+		}
+		
+		view.forward(request, response);
+	
+	}
+
+}

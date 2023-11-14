@@ -1,0 +1,67 @@
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/DeleteAccountServlet")
+public class DeleteAccountServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        
+        if (session != null && session.getAttribute("user_id") != null) {
+            String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+            String jdbcUsername = "project1";
+            String jdbcPassword = "123456";
+
+            try {
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+                
+                // Get user information from the session
+                String user_id = session.getAttribute("user_id").toString();
+                String user_pw = request.getParameter("current_password");
+
+                // Check if the provided password matches the user's password
+                String sql = "SELECT * FROM USER_INFO WHERE USER_ID =? AND USER_PW =?";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, user_id);
+                preparedStatement.setString(2, user_pw);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    // If password matches, proceed with account deletion
+                    String deleteSQL = "DELETE FROM USER_INFO WHERE USER_ID = ?";
+                    PreparedStatement deleteStatement = connection.prepareStatement(deleteSQL);
+                    deleteStatement.setString(1, user_id);
+                    deleteStatement.executeUpdate();
+                    
+                    // Invalidate session and redirect to a confirmation page
+                    session.invalidate();
+                    response.sendRedirect("user-delete-confirm.jsp");
+                } else {
+                    // Password doesn't match, handle error or redirect to an error page
+                    response.sendRedirect("password-mismatch-error.jsp");
+                }
+
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+                // Handle exceptions as needed
+            }
+        } else {
+            // No active session or user not logged in
+            response.sendRedirect("login.jsp");
+        }
+    }
+}
+

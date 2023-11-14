@@ -1,0 +1,43 @@
+@WebServlet("/LoginAndDeleteServlet")
+public class LoginAndDeleteServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+        String jdbcUsername = "project1";
+        String jdbcPassword = "123456";
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+            String user_id = request.getParameter("USER_ID");
+            String user_pw = request.getParameter("USER_PW");
+
+            String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ? AND USER_PW = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user_id);
+            preparedStatement.setString(2, user_pw);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                // Password matches, perform account deletion or set a flag for deletion
+                // Here, for demonstration, I'm setting a boolean flag for deletion in the session
+                HttpSession session = request.getSession();
+                session.setAttribute("deleteAccount", true);
+                response.sendRedirect("user-delete-confirm.jsp");
+            } else {
+                // Password doesn't match, handle the error or redirect to login with an error message
+                request.setAttribute("loginError", "true");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+

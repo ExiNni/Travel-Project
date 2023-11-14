@@ -1,0 +1,40 @@
+package com.kr.user_info;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/LoginCheckServlet")
+public class LoginCheckServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    	
+    	String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+		String jdbcUsername = "project1";
+		String jdbcPassword = "123456";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+        HttpSession session = request.getSession();
+        String storedPassword = (String) session.getAttribute("user_pw");
+
+        String enteredPassword = request.getParameter("input_password");
+
+        // Perform password check
+        if (storedPassword != null && storedPassword.equals(enteredPassword)) {
+            response.sendRedirect("user_password.jsp");
+        } else {
+            response.sendRedirect("user_password-edit.jsp");
+        }
+    }
+}

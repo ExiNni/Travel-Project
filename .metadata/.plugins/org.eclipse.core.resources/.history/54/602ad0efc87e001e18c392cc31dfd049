@@ -1,0 +1,35 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/CheckPasswordServlet")
+public class CheckPasswordServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+		String jdbcUsername = "project1";
+		String jdbcPassword = "123456";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+    	
+    	String inputPassword = request.getParameter("current_password");
+
+        HttpSession session = request.getSession();
+        String savedPassword = (String) session.getAttribute("user_pw");
+
+        if (inputPassword.equals(savedPassword)) {
+            response.sendRedirect("user-delete-confirm.jsp");
+        } else {
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('비밀번호가 일치하지 않습니다.'); window.history.back();</script>");
+        }
+    }
+}

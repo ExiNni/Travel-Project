@@ -1,0 +1,33 @@
+package com.kr.user_info;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/LoginCheckServlet")
+public class LoginCheckServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+        String jdbcUsername = "project1";
+        String jdbcPassword = "123456";
+
+        String userId = request.getParameter("user_id"); // Assuming you have a form input with name "user_id"
+        String enteredPassword = request.getParameter("enteredPassword"); // Assuming you have a form input with name "enteredPassword"
+
+        userDAO userDAO = new userDAO();
+
+        if (userDAO.isPasswordMatch(userId, enteredPassword)) {
+            // Passwords match, you can redirect to the next page
+            response.sendRedirect("nextPage.jsp"); // Change to your desired next page
+        } else {
+            // Passwords do not match, you can handle this scenario (e.g., show an error message)
+            response.sendRedirect("login.jsp"); // Change to your login page with an error message
+        }
+    }
+}
+

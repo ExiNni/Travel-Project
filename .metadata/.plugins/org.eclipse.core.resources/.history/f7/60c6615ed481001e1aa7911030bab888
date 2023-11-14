@@ -1,0 +1,68 @@
+package com.kr.user_info;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+
+public class userDAO {
+    private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
+    private static final String jdbcUsername = "project1";
+    private static final String jdbcPassword = "123456";
+
+    public boolean updateUserInformation(String userId, String currentPassword, String newPhone, String newName,
+            String newEmail, Date newAge) {
+        String sqlCheckPassword = "SELECT USER_PW FROM USER_INFO WHERE USER_ID = ?";
+        String sqlUpdateUser = "UPDATE USER_INFO SET USER_NAME=?, USER_AGE=?, USER_EMAIL=?, USER_PHONE=? WHERE USER_ID=?";
+
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+                PreparedStatement checkPasswordStatement = connection.prepareStatement(sqlCheckPassword);
+                PreparedStatement updateUserStatement = connection.prepareStatement(sqlUpdateUser)) {
+
+            checkPasswordStatement.setString(1, userId);
+            ResultSet resultSet = checkPasswordStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String storedPassword = resultSet.getString("USER_PW");
+                if (storedPassword.equals(currentPassword)) {
+                    updateUserStatement.setString(1, newName);
+                    updateUserStatement.setDate(2, new java.sql.Date(newAge.getTime()));
+                    updateUserStatement.setString(3, newEmail);
+                    updateUserStatement.setString(4, newPhone);
+                    updateUserStatement.setString(5, userId);
+
+                    int rowsUpdated = updateUserStatement.executeUpdate();
+
+                    return rowsUpdated > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+    
+    public boolean isPasswordMatch(String userId, String enteredPassword) {
+        String sqlCheckPassword = "SELECT USER_PW FROM USER_INFO WHERE USER_ID = ?";
+        
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+                PreparedStatement checkPasswordStatement = connection.prepareStatement(sqlCheckPassword)) {
+            
+            checkPasswordStatement.setString(1, userId);
+            ResultSet resultSet = checkPasswordStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String storedPassword = resultSet.getString("USER_PW");
+                return storedPassword.equals(enteredPassword);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+}
+

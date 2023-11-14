@@ -1,0 +1,31 @@
+package com.kr.user_info;
+
+import java.util.Date;
+
+public class user_info {
+	private String user_id;
+	private String user_pw;
+	private String user_phone;
+	private String user_name;
+	private String user_sex;
+	private Date user_age;
+	private Date user_date;
+	
+	public user_info() {
+	}
+
+	public user_info(String user_id, String user_pw, String user_phone, String user_name, String user_sex,
+			Date user_age, Date user_date) {
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_phone = user_phone;
+		this.user_name = user_name;
+		this.user_sex = user_sex;
+		this.user_age = user_age;
+		this.user_date = user_date;
+	}
+	
+	
+}
+
+
