@@ -1,22 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="java.util.ArrayList"  %>
-<%@ page import="java.util.List"  %>
-<%@ page import="com.kh.product.Product" %>
-<%@ page import="com.kh.product.ProductDAO" %>
-
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import ="com.kh.product.Product" %>
+<%@ page import ="com.kh.product.ProductDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>제품 목록</title>
+<title>제품목록</title>
 </head>
 <body>
-	<h1>제품 목록</h1>
+	<h1>제품목록</h1>
 	<table border="1">
 		<tr>
 			<th>제품 ID</th>
-			<th>제품 명</th>
+			<th>제품명 </th>
 			<th>카테고리</th>
 			<th>가격</th>
 			<th>수량</th>
@@ -24,17 +23,20 @@
 		<%
 			ProductDAO productDAO = new ProductDAO();
 			List<Product> products = productDAO.getAllProducts();
-			
-			for(Product p: products){
+		
+			for(Product p : products) {
 		%>
 		<tr>
-		<td> <a href="productDetail.jsp?productId=<%= p.getProductId() %>"> <%= p.getProductId() %></a> </td>
+		<td> <a href="productDetail.jsp?productId=<%=p.getProductId()%>">
+				<%= p.getProductId() %>  
+			</a>
+		</td>
 		<td> <%= p.getProductName() %></td>
 		<td> <%= p.getCategory() %></td>
 		<td> <%= p.getPrice() %></td>
 		<td> <%= p.getStockQuantity() %></td>
 		</tr>
-		<%
+		<%		
 			}
 		%>
 	</table>
