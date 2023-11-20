@@ -1,14 +1,6 @@
-INDEX VERSION 1.4+C:\Users\user1\servelet-jsp-workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2528288792.index
-3756437599.index
-2420232213.index
-2746708152.index
-571377810.index
-3381762669.index
-571377810.index
-2509504766.index
-426817270.index
-853856796.index
-3124303134.index
-1785505659.index
+INDEX VERSION 1.4+C:\Users\user1\Desktop\semi_EJ\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+60860123.index
+465362073.index
+1045233210.index
 1187061270.index
+3099707447.index
