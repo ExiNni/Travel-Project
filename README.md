@@ -1,5 +1,5 @@
 ### README sample (프로젝트 리드미 사용 방법)
-# 프로젝트 이름
+# 일본 여행 계획 사이트 떠나조
 
 <p align="center">
   <br>
