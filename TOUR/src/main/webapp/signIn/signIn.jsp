@@ -11,11 +11,18 @@
 <title>회원가입</title>
 
 </head>
+<style>
+</style>
 <body>
+
 	<form
 		action="<%=request.getContextPath()%>/LoginServlet?action=signIn"
 		method="post">
+		
+	<header>
+		
 		<section>
+		
 			<h1>회원가입</h1>
 			<div>
 				<label for="user_name">이름 : <em> * </em>
@@ -68,9 +75,12 @@
 			<button type="submit" onclick="Validation()">회원 가입</button>
 			<button type="reset" onclick="alert('초기화 했습니다.')">다시 입력</button>
 			</o>
-
+		
 		</section>
+		
+		</header>
 	</form>
+	
 
 	<script>
 		function Validation() {

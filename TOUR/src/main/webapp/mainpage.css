@@ -1,5 +1,6 @@
 @charset "EUC-KR";
 
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
 * {
     box-sizing: border-box;
     font-family: sans-serif;
@@ -11,6 +12,11 @@
 h1{
     color: #fff;
     text-align: start;
+    font-family: 'Bagel Fat One', sans-serif;
+    font-size: 100px;
+    text-shadow:  5px 5px 13px #EE9CA7;
+    
+    
 }
 
 header{
@@ -23,7 +29,7 @@ header{
 ul{
     float: right;
     list-style-type: none;
-    margin-top: 10px;
+    margin-top: 50px;
     
 }
 
@@ -31,7 +37,7 @@ ul li {
     display: inline-block;
 }
 
-ul li a{
+ul li a, span{
     text-decoration: none;
     color: #fff;
     padding: 5px 20px;
@@ -43,14 +49,19 @@ ul li a:hover {
     background-color: #fff;
     color: #000;
 }
+ul li span:hover {
+	background-color: #fff;
+	color: #000;
+}
 
-ul li.active a {
+
+ul li.active a, span {
     background-color: #fff;
     color: #000;
 }
 
 .navbar {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: auto;
 
 }
@@ -60,34 +71,12 @@ ul li.active a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 
-.title h1 {
-    color: #fff;
-    font-size: 70px;
 
-}
 
-.button {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
-.btn {
-    border: 1px solid #fff;
-    padding: 10px 30px;
-    color: #fff;
-    text-decoration: none;
-    transition: 0.6s ease;
-}
-
-.btn:hover{
-    background-color: #fff;
-    color:#000;
-}
 
 @media screen and (max-width: 768px) {
     body {
@@ -101,8 +90,5 @@ ul li.active a {
     }
 }
 
-.mainpage-name{
-	background-color: #fff;
-	text-align: center;
-}
+
 

@@ -24,11 +24,37 @@
 </script>
 
 </head>
+<style>
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #EE9CA7;
+    border-color: #EE9CA7;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #EE9CA7;
+    border-color: #EE9CA7;
+    
+    
+    
+}
+
+.btn-primary:hover {
+    color: black;
+    background-color: #EE9CA7;
+    border-color: #EE9CA7;
+    
+}
+</style>
 <body>
 	<form
 		action="<%=request.getContextPath()%>/LoginServlet?action=updatePassword"
 		method="post">
 		<header>
+		<a href="../website.jsp">
+		<h1>떠나조</h1></a>
 			<div class="total">
 				<div class="container light-style flex-grow-1 container-p-y">
 					<h3 class="font-weight-bold py-3 mb-4">마이 페이지</h3>
@@ -42,11 +68,7 @@
 										class="list-group-item list-group-item-action active"
 										data-toggle="list" href="user_password-edit.jsp">비밀 번호 변경</a>
 									<a class="list-group-item list-group-item-action"
-										data-toggle="list" href="user-post.jsp">내가 쓴 게시글</a> <a
-										class="list-group-item list-group-item-action"
-										data-toggle="list" href="user-comment.jsp">내가 쓴 댓글</a> <a
-										class="list-group-item list-group-item-action"
-										data-toggle="list" href="user-inquiry-password.jsp">문의 내역</a>
+										data-toggle="list" href="user-post.jsp">내가 쓴 게시글</a>
 									<a class="list-group-item list-group-item-action"
 										data-toggle="list" href="user-delete.jsp">회원 탈퇴</a>
 								</div>
@@ -102,4 +124,3 @@
 	</script>
 </body>
 </html>
-

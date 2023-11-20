@@ -1,14 +1,64 @@
 package com.kh.board;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
+import oracle.sql.TIMESTAMP;
+
 public class BoardComment {
+	private  int review_number;
+	private int post_number;
 	private	 String user_id;
 	private	 String review_content;
 	private  String review_writer;
-	private  int review_number;
-	private int POST_NUMBER;
-	private int review_date;
-	private int review_like;
+	private Timestamp review_date;
 	
+	
+	
+	public BoardComment() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	
+	public BoardComment(int review_number, int post_number, String user_id, String review_writer,String review_content, Timestamp review_date) {
+		this.review_number = review_number;
+		this.post_number = post_number;
+		this.user_id = user_id;
+		this.review_writer = review_writer;
+		this.review_content = review_content;
+		this.review_date = review_date;
+	}
+
+
+
+
+	public BoardComment(int review_number, String user_id, String review_writer, String review_content, Timestamp review_date) {
+		this.review_number = review_number;
+		this.user_id = user_id;
+		this.review_writer = review_writer;
+		this.review_content = review_content;
+		this.review_date = review_date;
+	}
+
+
+
+	public int getPost_Number() {
+		return post_number;
+	}
+
+	public void setPost_Number(int post_Number) {
+		this.post_number = post_Number;
+	}
+
+	public Timestamp getReview_date() {
+		return review_date;
+	}
+
+	public void setReview_date(Timestamp review_date) {
+		this.review_date = review_date;
+	}
+
 	public String getUser_id() {
 		return user_id;
 	}
@@ -41,44 +91,16 @@ public class BoardComment {
 		this.review_number = review_number;
 	}
 
-	public int getPOST_NUMBER() {
-		return POST_NUMBER;
-	}
 
-	public void setPOST_NUMBER(int pOST_NUMBER) {
-		POST_NUMBER = pOST_NUMBER;
-	}
 
-	public int getReview_date() {
-		return review_date;
-	}
 
-	public void setReview_date(int review_date) {
-		this.review_date = review_date;
-	}
+	
 
-	public int getReview_like() {
-		return review_like;
-	}
+	
 
-	public void setReview_like(int review_like) {
-		this.review_like = review_like;
-	}
+	
 
-	public BoardComment(String user_id, String review_content, String review_writer, int review_number, int POST_NUMBER,int review_date,int review_like) {
-		this.user_id=user_id;
-		this.review_content = review_content;
-		this.review_writer = review_writer;
-		this.review_number = review_number;
-		this.POST_NUMBER = POST_NUMBER;
-		this.review_date = review_date;
-		this.review_like = review_like;
-	}
-
-	public BoardComment(int review_number2, int pOST_NUMBER2, int review_date2, int review_like2, String review_writer2,
-			String review_content2) {
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	
 }

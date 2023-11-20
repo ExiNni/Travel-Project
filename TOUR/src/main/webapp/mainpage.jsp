@@ -3,15 +3,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>로그인</title>
+    <title>메인페이지</title>
     <link rel="stylesheet" href="mainpage.css">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <form action="LoginServlet" method="post">
         <input type="hidden" name="action" value="login">
         <header>
-            <h1>Main Page</h1>
+           
             <div class="navbar">
                 <ul>
                     <li class="active"><a href="website.jsp">TOP 여행지</a></li>
@@ -22,7 +23,7 @@
 
                         if (loggedIn != null && !loggedIn.isEmpty()) {
                     %>
-                            <li class="mainpage-name"><span><%=userName%>님</span></li>
+                            <li class="active"><span><%=userName%>님</span></li>
                     <%
                         } else {
                     %>
@@ -34,11 +35,9 @@
                 </ul>
             </div>
             <div class="title">
-                <h1>Main Page</h1>
+                <h1>떠나조</h1>
             </div>
-            <div class="button">
-                <a href="#" class="btn">LEARN MORE</a>
-            </div>
+            
         </header>
     </form>
 </body>

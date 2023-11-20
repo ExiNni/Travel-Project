@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class deleteServlet
  */
-@WebServlet("/deleteServlet")
+@WebServlet("/board/deleteServlet")
 public class deleteServlet extends HttpServlet {
 	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String jdbcUsername = "TRAVEL";
-	private static final String jdbcPassword = "TRAVEL1234";
+	private static final String jdbcUsername = "tour";
+	private static final String jdbcPassword = "1234";
     
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

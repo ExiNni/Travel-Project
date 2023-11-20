@@ -15,6 +15,8 @@
 <body>
 	<form action="LoginServlet" method="post">
 		<header>
+		<a href="../website.jsp">
+		<h1>떠나조</h1></a>
         <div class="total">
             <div class="container light-style flex-grow-1 container-p-y">
                 <h3 class="font-weight-bold py-3 mb-4">
@@ -33,9 +35,7 @@
                                     href="./user-post.html">내가 쓴 게시글</a>
                                     
                                    
-                                <a class="list-group-item list-group-item-action" data-toggle="list" href="./user-comment.html">내가 쓴
-                                    댓글</a>
-                                <a class="list-group-item list-group-item-action active" data-toggle="list" href="./user-inquiry-password.html">문의 내역</a>
+                           
                                 <a class="list-group-item list-group-item-action" data-toggle="list" href="./user-delete.html">회원 탈퇴</a>
                             </div>
                         </div>

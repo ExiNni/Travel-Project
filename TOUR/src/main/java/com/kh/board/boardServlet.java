@@ -20,11 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class boardServlet
  */
-@WebServlet("/boardServlet")
+@WebServlet("/board/boardServlet")
 public class boardServlet extends HttpServlet {
 	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String jdbcUsername = "TRAVEL";
-	private static final String jdbcPassword = "TRAVEL1234";
+	private static final String jdbcUsername = "tour";
+	private static final String jdbcPassword = "1234";
     
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +34,6 @@ public class boardServlet extends HttpServlet {
 			Class.forName("oracle.jdbc.OracleDriver");
 			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 			int post_number =Integer.parseInt(request.getParameter("post_number"));
-			//SQL ����
 			String sql = "SELECT * FROM boards";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ResultSet resultSet = ps.executeQuery();
@@ -116,5 +115,4 @@ public class boardServlet extends HttpServlet {
 		
 		
 	}
-
 }

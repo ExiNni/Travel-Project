@@ -15,6 +15,8 @@
 <body>
 	<form action="LoginServlet" method="post">
 		 <header>
+		 <a href="../website.jsp">
+		<h1>떠나조</h1></a>
         <div class="total">
             <div class="container light-style flex-grow-1 container-p-y">
                 <h3 class="font-weight-bold py-3 mb-4">

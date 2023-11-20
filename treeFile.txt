@@ -1,0 +1,390 @@
+OS 볼륨에 대한 폴더 경로의 목록입니다.
+볼륨 일련 번호는 FC5D-25D9입니다.
+C:.
+│  .gitignore
+│  README.md
+│  treeFile.txt
+│  
+├─image
+│  │  .classpath
+│  │  .project
+│  │  
+│  ├─.settings
+│  │      .jsdtscope
+│  │      org.eclipse.jdt.core.prefs
+│  │      org.eclipse.wst.common.component
+│  │      org.eclipse.wst.common.project.facet.core.xml
+│  │      org.eclipse.wst.jsdt.ui.superType.container
+│  │      org.eclipse.wst.jsdt.ui.superType.name
+│  │      
+│  ├─build
+│  │  └─classes
+│  │      └─com
+│  │          └─kh
+│  │              └─imageUpload
+│  │                      ImageServlet.class
+│  │                      UploadServlet.class
+│  │                      
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─kh
+│          │          └─imageUpload
+│          │                  ImageServlet.java
+│          │                  UploadServlet.java
+│          │                  
+│          └─webapp
+│              │  imageList.jsp
+│              │  upload.jsp
+│              │  
+│              ├─META-INF
+│              │      MANIFEST.MF
+│              │      
+│              └─WEB-INF
+│                  └─lib
+│                          ojdbc11.jar
+│                          
+├─join
+│  │  .classpath
+│  │  .project
+│  │  
+│  ├─.settings
+│  │      .jsdtscope
+│  │      org.eclipse.jdt.core.prefs
+│  │      org.eclipse.wst.common.component
+│  │      org.eclipse.wst.common.project.facet.core.xml
+│  │      org.eclipse.wst.jsdt.ui.superType.container
+│  │      org.eclipse.wst.jsdt.ui.superType.name
+│  │      
+│  ├─build
+│  │  └─classes
+│  │          RegisterServlet.class
+│  │          
+│  ├─src
+│  │  └─main
+│  │      ├─java
+│  │      │      RegisterServlet.java
+│  │      │      
+│  │      └─webapp
+│  │          │  register.jsp
+│  │          │  register_fail.jsp
+│  │          │  register_success.jsp
+│  │          │  styles.css
+│  │          │  
+│  │          ├─META-INF
+│  │          │      MANIFEST.MF
+│  │          │      
+│  │          └─WEB-INF
+│  │              └─lib
+│  │                      ojdbc11.jar
+│  │                      
+│  └─설명 적는 란
+│          Apache_Tomcat_Servlet_JSP 등 설명작성.txt
+│          http송신코드.txt
+│          
+├─Product_List
+│  │  .classpath
+│  │  .project
+│  │  
+│  ├─.settings
+│  │      .jsdtscope
+│  │      org.eclipse.jdt.core.prefs
+│  │      org.eclipse.wst.common.component
+│  │      org.eclipse.wst.common.project.facet.core.xml
+│  │      org.eclipse.wst.jsdt.ui.superType.container
+│  │      org.eclipse.wst.jsdt.ui.superType.name
+│  │      
+│  ├─build
+│  │  └─classes
+│  │      └─com
+│  │          └─kh
+│  │              └─product
+│  │                      AddCommentServlet.class
+│  │                      Product.class
+│  │                      ProductComment.class
+│  │                      ProductDAO.class
+│  │                      ProductServlet.class
+│  │                      UpdateProductServlet.class
+│  │                      
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─kh
+│          │          └─product
+│          │                  AddCommentServlet.java
+│          │                  Product.java
+│          │                  ProductComment.java
+│          │                  ProductDAO.java
+│          │                  ProductServlet.java
+│          │                  UpdateProductServlet.java
+│          │                  
+│          └─webapp
+│              │  productDetail.jsp
+│              │  productList.jsp
+│              │  updateProduct.jsp
+│              │  
+│              ├─META-INF
+│              │      MANIFEST.MF
+│              │      
+│              └─WEB-INF
+│                  └─lib
+│                          ojdbc11.jar
+│                          
+├─project1
+│  │  .project
+│  │  
+│  └─bin
+│          .project
+│          
+├─project_login
+│  │  .classpath
+│  │  .project
+│  │  
+│  ├─.settings
+│  │      .jsdtscope
+│  │      org.eclipse.jdt.core.prefs
+│  │      org.eclipse.wst.common.component
+│  │      org.eclipse.wst.common.project.facet.core.xml
+│  │      org.eclipse.wst.jsdt.ui.superType.container
+│  │      org.eclipse.wst.jsdt.ui.superType.name
+│  │      
+│  ├─build
+│  │  └─classes
+│  │      └─com
+│  │          └─kr
+│  │              └─user_info
+│  │                      LoginServlet.class
+│  │                      User.class
+│  │                      
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─kr
+│          │          └─user_info
+│          │                  LoginServlet.java
+│          │                  User.java
+│          │                  
+│          └─webapp
+│              │  3.jpg
+│              │  login.css
+│              │  login.jsp
+│              │  logout.jsp
+│              │  mainpage.css
+│              │  mainpage.jsp
+│              │  website.css
+│              │  website.jsp
+│              │  
+│              ├─META-INF
+│              │      MANIFEST.MF
+│              │      
+│              ├─myPage
+│              │  │  input_tour_info.jsp
+│              │  │  user-comment.jsp
+│              │  │  user-delete-confirm.jsp
+│              │  │  user-delete.jsp
+│              │  │  user-info-edit.jsp
+│              │  │  user-info.jsp
+│              │  │  user-inquiry-password.jsp
+│              │  │  user-inquiry.jsp
+│              │  │  user-post.jsp
+│              │  │  user_password-edit.jsp
+│              │  │  user_password.jsp
+│              │  │  
+│              │  └─mypage-css
+│              │          3.jpg
+│              │          mypage.css
+│              │          
+│              ├─signIn
+│              │      errorId.jsp
+│              │      signIn.css
+│              │      signIn.jsp
+│              │      
+│              └─WEB-INF
+│                  └─lib
+│                          ojdbc11.jar
+│                          
+├─readme-static
+│  └─img
+│          java.svg
+│          javascript.svg
+│          node.svg
+│          react.svg
+│          
+├─Servers
+│  │  .project
+│  │  
+│  ├─.settings
+│  │      org.eclipse.wst.server.core.prefs
+│  │      
+│  └─Tomcat v9.0 Server at localhost-config
+│          catalina.policy
+│          catalina.properties
+│          context.xml
+│          server.xml
+│          tomcat-users.xml
+│          web.xml
+│          
+├─spot
+│  │  .classpath
+│  │  .gitignore
+│  │  .project
+│  │  .tern-project
+│  │  jquery-3.7.1.js
+│  │  
+│  ├─.settings
+│  │      .jsdtscope
+│  │      org.eclipse.jdt.core.prefs
+│  │      org.eclipse.wst.common.component
+│  │      org.eclipse.wst.common.project.facet.core.xml
+│  │      org.eclipse.wst.jsdt.ui.superType.container
+│  │      org.eclipse.wst.jsdt.ui.superType.name
+│  │      
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─spot
+│          │          spotServlet.java
+│          │          Tour.java
+│          │          TourDAO.java
+│          │          TourServlet.java
+│          │          
+│          └─webapp
+│              │  1.jpeg
+│              │  asd.js
+│              │  input_tour_info.jsp
+│              │  jquery-3.2.1.min.js
+│              │  jquery-3.7.1.js
+│              │  jquery-3.7.1.min.js
+│              │  tour.js
+│              │  tourList.jsp
+│              │  
+│              ├─META-INF
+│              │      MANIFEST.MF
+│              │      
+│              └─WEB-INF
+│                  └─lib
+│                          ojdbc11.jar
+│                          
+├─testFolder
+│  │  .classpath
+│  │  .project
+│  │  설명 적는 란.txt
+│  │  
+│  ├─.settings
+│  │      .jsdtscope
+│  │      org.eclipse.jdt.core.prefs
+│  │      org.eclipse.wst.common.component
+│  │      org.eclipse.wst.common.project.facet.core.xml
+│  │      org.eclipse.wst.jsdt.ui.superType.container
+│  │      org.eclipse.wst.jsdt.ui.superType.name
+│  │      
+│  ├─build
+│  │  └─classes
+│  │          LoginServlet.class
+│  │          
+│  └─src
+│      └─main
+│          ├─java
+│          │      LoginServlet.java
+│          │      
+│          └─webapp
+│              │  home.jsp
+│              │  login.jsp
+│              │  login_success.jsp
+│              │  logout.jsp
+│              │  
+│              ├─META-INF
+│              │      MANIFEST.MF
+│              │      
+│              └─WEB-INF
+│                  └─lib
+│                          ojdbc11.jar
+│                          
+└─TOUR
+    │  .classpath
+    │  .gitignore
+    │  .project
+    │  
+    ├─.settings
+    │      .jsdtscope
+    │      org.eclipse.jdt.core.prefs
+    │      org.eclipse.wst.common.component
+    │      org.eclipse.wst.common.project.facet.core.xml
+    │      org.eclipse.wst.jsdt.ui.superType.container
+    │      org.eclipse.wst.jsdt.ui.superType.name
+    │      
+    └─src
+        └─main
+            ├─java
+            │  └─com
+            │      └─kh
+            │          ├─board
+            │          │      BoardAddComment.java
+            │          │      BoardComment.java
+            │          │      BoardDAO.java
+            │          │      BoardDTO.java
+            │          │      boardServlet.java
+            │          │      deleteServlet.java
+            │          │      updateServlet.java
+            │          │      
+            │          ├─mainPage
+            │          │      mainPage.java
+            │          │      mainPageDAO.java
+            │          │      mainPageServlet.java
+            │          │      
+            │          └─myPage
+            │                  LoginServlet.java
+            │                  
+            └─webapp
+                │  3.jpg
+                │  login.css
+                │  login.jsp
+                │  logout.jsp
+                │  mainpage.css
+                │  mainpage.jsp
+                │  website.css
+                │  website.jsp
+                │  
+                ├─META-INF
+                │      MANIFEST.MF
+                │      
+                ├─myPage
+                │  │  input_tour_info.jsp
+                │  │  user-comment.jsp
+                │  │  user-delete-confirm.jsp
+                │  │  user-delete.jsp
+                │  │  user-info-edit.jsp
+                │  │  user-info.jsp
+                │  │  user-inquiry-password.jsp
+                │  │  user-inquiry.jsp
+                │  │  user-post.jsp
+                │  │  user_password-edit.jsp
+                │  │  user_password.jsp
+                │  │  
+                │  └─mypage-css
+                │          3.jpg
+                │          mypage.css
+                │          
+                ├─Sapporo
+                │  └─spot
+                │          tourDetail2.jsp
+                │          tourList2.jsp
+                │          다누키코지 상점가.jpg
+                │          시로이코이비토 파크.jpg
+                │          오도리공원.jpg
+                │          오타루운하.jpg
+                │          조잔케이.jpg
+                │          홋카이도 신궁.jpg
+                │          
+                ├─signIn
+                │      errorId.jsp
+                │      signIn.css
+                │      signIn.jsp
+                │      
+                └─WEB-INF
+                    └─lib
+                            ojdbc11.jar
+                            

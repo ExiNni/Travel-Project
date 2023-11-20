@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDAO {
 	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String jdbcUsername = "TRAVEL";
-	private static final String jdbcPassword = "TRAVEL1234";
+	private static final String jdbcUsername = "tour";
+	private static final String jdbcPassword = "1234";
 	
 	public BoardDAO() {
 		try {
@@ -88,55 +89,106 @@ public class BoardDAO {
 		
 		return board;
 	}
-	 public void addComment(BoardComment comment) {
-    	 try {
+	public boolean addComment(BoardComment bReview) {
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+       PreparedStatement ps = connection.prepareStatement(
+       "INSERT INTO review (review_number, post_Number,user_id,review_writer,review_content,review_date) VALUES (review_seq.NEXTVAL,?,?,?,?,CURRENT_TIMESTAMP)")) {
+
+                        
+			 ps.setInt(1, bReview.getPost_Number());
+			 ps.setString(2,  bReview.getUser_id());
+			 ps.setString(3, bReview.getReview_writer());
+			 ps.setString(4, bReview.getReview_content());
+			
+
+            int rowsAffected = ps.executeUpdate();
+            System.out.println("rowsAffected : " + rowsAffected);
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+	public BoardComment getBoardCommentById(String user_id) {
+		
+		BoardComment bc = null;
+		
+		
+		try {
 			Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-			 String sql = "INSERT INTO product_comments (review_number, POST_NUMBER, user_id, review_writer, review_content,review_date,review_like) VALUES (?, ?, ?, ?, ?, ?, ? )";
-			 PreparedStatement ps = connection.prepareStatement(sql);
-			 ps.setInt(1, comment.getReview_number());
-			 ps.setInt(2, comment.getPOST_NUMBER());
-			 ps.setString(3,  comment.getUser_id());
-			 ps.setString(4, comment.getReview_writer());
-			 ps.setString(5, comment.getReview_content());
-			 ps.setInt(6, comment.getReview_date());
-			 ps.setInt(7, comment.getReview_like());
-						 	
-			 ps.executeUpdate();
-    	 } catch (SQLException e) {
+			String sql = "SELECT * FROM review WHERE user_id = ?";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, user_id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				bc = new BoardComment();
+				bc.setUser_id(rs.getString("user_id"));
+				bc.setReview_content(rs.getString("review_content"));
+				bc.setReview_writer(rs.getString("review_writer"));
+			}
+			
+			
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	 
-     }
-    
-     public ArrayList<BoardComment> getCommentsByProductId(String user_id){
-    	 ArrayList<BoardComment> boardList = new ArrayList<>();
-    	 try {
-			Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-			String sql = "SELECT * FROM board_comments WHERE user_id= ?";
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(1, user_id);
-			ResultSet resultSet = ps.executeQuery();
-			
-			while(resultSet.next()){
-				int review_number = resultSet.getInt("review_number");
-				int POST_NUMBER = resultSet.getInt("POST_NUMBER");
-				int Review_date = resultSet.getInt("Review_date");
-				int Review_like = resultSet.getInt("Review_like");
-				String Review_writer = resultSet.getString("Review_writer");
-				String Review_content = resultSet.getString("Review_content");
-			
-				
-				
-				BoardComment comment = new BoardComment(review_number,POST_NUMBER,Review_date,Review_like,Review_writer,Review_content);
-				boardList.add(comment);
-			}
-    	 } catch (SQLException e) {
-			
-			e.printStackTrace();
+		return bc;
+	
+	}
+	   public ArrayList<BoardComment> getCommentsByProductId(int post_number) {
+		   ArrayList<BoardComment> commentList = new ArrayList<>();
+
+	        try {
+	        	Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+	        	String sql = "SELECT * FROM review WHERE post_number = ?";
+	            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	        
+	            preparedStatement.setInt(1, post_number);
+
+	           
+	            	ResultSet resultSet = preparedStatement.executeQuery();
+	                while (resultSet.next()) {
+	                	
+	                    int review_number  = resultSet.getInt("review_number"); 
+	                    int post_Number  = resultSet.getInt("post_Number"); 
+	                    String user_id = resultSet.getString("user_id");
+	                    String review_writer = resultSet.getString("review_writer");
+	                    String review_content = resultSet.getString("review_content");
+	                    Timestamp review_date  = resultSet.getTimestamp("review_date"); 
+
+	                    BoardComment comment = new BoardComment(review_number,user_id,review_writer,review_content ,review_date);
+	                    commentList.add(comment);
+	                }
+	            
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	        return commentList;
+	}
+	   
+	   public List<BoardDTO> getBoardsByUserId(String user_id) {
+		    List<BoardDTO> userBoards = new ArrayList<>();
+		    try {
+		        Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+		        String sql = "SELECT * FROM boards WHERE user_id = ?";
+		        PreparedStatement ps = connection.prepareStatement(sql);
+		        ps.setString(1, user_id);
+		        ResultSet rs = ps.executeQuery();
+		        while (rs.next()) {
+		            BoardDTO board = new BoardDTO();
+		            board.setPost_number(rs.getInt("post_number"));
+		            board.setCity_name(rs.getString("city_name"));
+		            board.setCategory(rs.getString("category"));
+		            board.setTitle(rs.getString("title"));
+		            board.setPost_time(rs.getString("post_time"));
+		            userBoards.add(board);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    return userBoards;
 		}
 
-    	 return boardList;
-     }
-	
 }
