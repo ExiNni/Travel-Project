@@ -84,7 +84,18 @@ alert 창으로 비밀번호가 변경이 되었다는 것을 알려준 후 다�
 <br>
 
 ### 기능 3. 게시판
-<img src="">
+<img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%902.png"><br>
+로그인 한 유저만 게시판을 이용할 수 있다.<br>
+작성자 아이디는 현재 로그인한 유저의 아이디를 가져오게 설정했습니다.<br>
+제목과 내용을 작성한 후 라디오 버튼을 클릭하여 도시와 카테고리를 설정할 수 있습니다. <br>
+<img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%903.png"><br>
+작성한 게시글을 저장하면 자유게시판에 올라와있는 모습입니다. <br>
+<img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%904.png"><br>
+게시글 작성자와 현재 로그인한 유저의 아이디가 일치하면 글을 수정 및 삭제할 수 있습니다. <br>
+<img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%905.png"><br>
+작성자가 아니라면 수정하기 버튼과 삭제하기 버튼은 보이지 않습니다.
+
+
 <p align="justify">
 설명란
 </p>
