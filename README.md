@@ -31,23 +31,32 @@
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" width="180" height="80"> 
   <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" width="180" height="80">
 </div>
+
 <br>
 
 ### 데이터베이스
-<img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white">
+<div style="width: 200px; height: 100px;">
+  <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" width="180" height="80">
+</div>
 <br>
 
 ### 개발 도구
-<img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eeclipseide&logoColor=white">
-<img src="https://img.shields.io/badge/VS_CODE-007ACC?style=for-the-badge&logo=evisualstudiocode&logoColor=white">
+<div style="width: 200px; height: 100px;">
+  <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eeclipseide&logoColor=white" width="180" height="80">
+  <img src="https://img.shields.io/badge/VS_CODE-007ACC?style=for-the-badge&logo=evisualstudiocode&logoColor=white" width="180" height="80">
+</div>
 <br>
 
 ### 서버
-<img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
+<div style="width: 200px; height: 100px;">
+  <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white" width="180" height="80">
+</div>
 <br>
 
 ### 협업 툴
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<div style="width: 200px; height: 100px;">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" width="180" height="80">
+</div>
 <br>
 
 ## 3. 구현 기능
