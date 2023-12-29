@@ -56,6 +56,7 @@
 ### 협업 툴
 <div style="width: 200px; height: 100px;">
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" width="180" height="80">
+  <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" width="180" height="80">
 </div>
 <br>
 
