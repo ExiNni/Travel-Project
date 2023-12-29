@@ -36,6 +36,7 @@
 ### 개발 도구
 <img src="https://img.shields.io/badge/#2C2255?style=for-the-badge&logo=eclipseide&logoColor=white">
 <img src="https://img.shields.io/badge/#007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
+<img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white">
 ### 서버
 <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
 <br>
