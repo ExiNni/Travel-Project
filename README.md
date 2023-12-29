@@ -30,34 +30,48 @@
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 <br>
+
 ### 데이터베이스
 <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white">
 <br>
 ### 개발 도구
 <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eeclipseide&logoColor=white">
 <img src="https://img.shields.io/badge/VS_CODE-007ACC?style=for-the-badge&logo=evisualstudiocode&logoColor=white">
+<br>
 
 ### 서버
 <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
 <br>
+
 ### 협업 툴
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-<br>
-
-
-
 <br>
 
 ## 3. 구현 기능
 
 ### 기능 1
-
+<img src="">
+<p align="justify">
+설명란
+</p>
+<br>
 ### 기능 2
-
+<img src="">
+<p align="justify">
+설명란
+</p>
+<br>
 ### 기능 3
-
+<img src="">
+<p align="justify">
+설명란
+</p>
+<br>
 ### 기능 4
-
+<img src="">
+<p align="justify">
+설명란
+</p>
 <br>
 
 ## 4. 피드백
