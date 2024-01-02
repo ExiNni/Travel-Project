@@ -72,20 +72,20 @@
 ### 기능 2. 마이페이지
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80.png">
 <p align="justify">
-로그인을 하면 마이페이지로 이동이 가능하다. <br>
-마이페이지에서는 회원정보 수정, 비밀번호 변경, 내가 쓴 게시글, 회원 탈퇴가 가능하다.<br>
+로그인을 하면 마이페이지로 이동이 가능하며 로그인을 하지 않은 경우 로그인페이지로 연결됩니다. <br><br><br>
+마이페이지에서는 회원정보 수정, 비밀번호 변경, 내가 쓴 게시글, 회원 탈퇴가 가능합니다.<br><br><br>
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EB%B3%80%EA%B2%BD.png"><br>
-비밀번호 변경의 경우 입력한 비밀번호와 현재 로그인한 계정의 비밀번호가 일치하면 변경 페이지로 이동이 가능하다.<br>
+비밀번호 변경의 경우 입력한 비밀번호와 현재 로그인한 계정의 비밀번호가 일치하면 비밀번호 변경 페이지로 이동이 가능합니다.<br><br><br>
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EB%B3%80%EA%B2%BD2.png"><br>
-변경할 비밀번호와 재입력한 비밀번호가 일치하면 비밀번호 변경이 완료된다.<br>
+변경할 비밀번호와 재입력한 비밀번호가 일치하면 비밀번호 변경이 완료됩니.<br><br><br>
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EB%B3%80%EA%B2%BD3.png"><br>
-alert 창으로 비밀번호가 변경이 되었다는 것을 알려준 후 다시 마이페이지로 이동하게 된다.<br>
+alert 창으로 비밀번호가 변경이 되었다는 것을 알려준 후 다시 마이페이지로 이동하게 됩니다.<br><br><br>
 </p>
 <br>
 
 ### 기능 3. 게시판
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%902.png"><br>
-로그인 한 유저만 게시판을 이용할 수 있다.<br>
+로그인 한 유저만 게시판을 이용할 수 있습니다.<br>
 작성자 아이디는 현재 로그인한 유저의 아이디를 가져오게 설정했습니다.<br>
 제목과 내용을 작성한 후 라디오 버튼을 클릭하여 도시와 카테고리를 설정할 수 있습니다. <br>
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%903.png"><br>
@@ -95,11 +95,6 @@ alert 창으로 비밀번호가 변경이 되었다는 것을 알려준 후 다�
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%905.png"><br>
 작성자가 아니라면 수정하기 버튼과 삭제하기 버튼은 보이지 않습니다.
 
-
-<p align="justify">
-설명란
-</p>
-<br>
 
 ### 기능 4
 <img src="">
