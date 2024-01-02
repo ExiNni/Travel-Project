@@ -62,14 +62,14 @@
 
 ## 3. 구현 기능
 
-### 기능 1
+### 기능 1. 로그인 및 회원가입
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A1%9C%EA%B7%B8%EC%9D%B82.PNG">
 <p align="justify">
 로그인 페이지
 </p>
 <br>
 
-### 기능 2
+### 기능 2. 마이페이지
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80.png">
 <p align="justify">
 로그인을 하면 마이페이지로 이동이 가능하다. <br>
@@ -83,7 +83,7 @@ alert 창으로 비밀번호가 변경이 되었다는 것을 알려준 후 다�
 </p>
 <br>
 
-### 기능 3
+### 기능 3. 게시판
 <img src="">
 <p align="justify">
 설명란
