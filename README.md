@@ -77,7 +77,7 @@
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EB%B3%80%EA%B2%BD.png"><br>
 비밀번호 변경의 경우 입력한 비밀번호와 현재 로그인한 계정의 비밀번호가 일치하면 비밀번호 변경 페이지로 이동이 가능합니다.<br><br><br>
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EB%B3%80%EA%B2%BD2.png"><br>
-변경할 비밀번호와 재입력한 비밀번호가 일치하면 비밀번호 변경이 완료됩니.<br><br><br>
+변경할 비밀번호와 재입력한 비밀번호가 일치하면 비밀번호 변경이 완료됩니다.<br><br><br>
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EB%B3%80%EA%B2%BD3.png"><br>
 alert 창으로 비밀번호가 변경이 되었다는 것을 알려준 후 다시 마이페이지로 이동하게 됩니다.<br><br><br>
 </p>
