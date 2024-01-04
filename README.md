@@ -85,14 +85,18 @@
 ## 3. 구현 기능
 
 ### 기능 1. 로그인 및 회원가입
+<p align="center">
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A1%9C%EA%B7%B8%EC%9D%B82.PNG" width="800" height="400">
+</p>
 <p align="justify">
 로그인 페이지
 </p>
 <br>
 
 ### 기능 2. 마이페이지
+<p align="center">
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80.png" width="800" height="400">
+</p>
 <p align="justify">
 로그인을 하면 마이페이지로 이동이 가능하며 로그인을 하지 않은 경우 로그인페이지로 연결됩니다. <br><br><br>
 마이페이지에서는 회원정보 수정, 비밀번호 변경, 내가 쓴 게시글, 회원 탈퇴가 가능합니다.<br><br><br>
