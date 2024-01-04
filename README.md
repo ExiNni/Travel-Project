@@ -88,7 +88,7 @@
 <p align="center">
 <img src="https://github.com/ExiNni/Travel-Project/blob/master/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A1%9C%EA%B7%B8%EC%9D%B82.PNG" width="800" height="400">
 </p>
-<p align="justify">
+<p align="center">
 로그인 페이지
 </p>
 <br>
